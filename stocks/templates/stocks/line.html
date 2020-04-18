@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Expense Manager
+{% endblock title %}
+
+{% block scripts %}
+
+<script>
+		$(document).ready(function(){
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'line',
+			    data: {
+			        labels: [
+			        	{% for item in items %}
+			            		'{{ item }}',
+			            	{% endfor %}
+			        ],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [
+			            	{% for price in prices %}
+			            		{{ price }},
+			            	{% endfor %}
+			            ],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255, 99, 132, 1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			    	responsive:false,
+    				maintainAspectRatio: false,
+    				layout:{
+    					padding:{
+    						left:50,
+    						right:0,
+    						top:0,
+    						bottom:0
+    					}
+    				},
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero: true
+			                }
+			            }]
+			        }
+			    }
+			});
+		});
+	</script>
+
+{% endblock scripts %}
+
+{% block content %}
+<div  width="50%" style="text-align: center; padding-right: 90px">
+	<h2>Line Chart</h2>
+</div>
+		
+<div width="50%">
+	
+		<form class="contact-form" method="POST" action="/line/get_data_line/" style="float:left; padding-left: 250px">
+		{% csrf_token %}
+			
+			<table cellpadding="10">
+				<th colspan="2" style="text-align: center;"><h2>Company 1</h2></th>
+				<tr>
+					<!-- First  Name -->
+					<td>
+						<label for="day_one">1:</label>
+					</td>
+					<td>
+						<input type="number" id="day_one" name="day_one"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Last Name -->
+						<label for="day_two">2:</label>
+					</td>
+					<td>
+						<input type="nummber" id="day_two" name="day_two"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Salary -->
+						<label for="day_three">3:  </label>
+					</td>
+					<td>
+						<input type="number" id="day_three" name="day_three"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Qualification -->
+						<label for="day_four">4:</label>
+					</td>
+					<td>
+						<input type="number" id="day_four" name="day_four"><br><br>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="day_five">5:</label>
+					</td>
+					<td>
+						<input type="number" id="day_five" name="day_five"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Shift Type -->
+						<label for="day_six">6:</label>
+					</td>
+					<td>
+						<input type="number" id="day_six" name="day_six"><br><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="day_seven">7:</label>
+					</td>
+					<td>
+						<input type="number" id="day_seven" name="day_seven"><br><br>
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<!-- Shift Type -->
+						<label for="day_eight">8:</label>
+					</td>
+					<td>
+						<input type="number" id="day_eight" name="day_eight"><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="day_nine">9:</label>
+					</td>
+					<td>
+						<input type="number" id="day_nine" name="day_nine"><br><br>
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<!-- Shift Type -->
+						<label for="day_ten">10:</label>
+					</td>
+					<td>
+						<input type="number" id="day_ten" name="day_ten"><br>
+					</td>
+				</tr>
+			</table>
+		
+	</div>
+
+<div width="50%" style="float:left; padding-left: 200px">
+		
+			
+			<table cellpadding="10">
+				<th colspan="2" style="text-align: center;"><h2>Company 2</h2></th>
+				<tr>
+					<!-- First  Name -->
+					<td>
+						<label for="two_day_one">1:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_one" name="two_day_one"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Last Name -->
+						<label for="two_day_two">2:</label>
+					</td>
+					<td>
+						<input type="nummber" id="two_day_two" name="two_day_two"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Salary -->
+						<label for="two_day_three">3:  </label>
+					</td>
+					<td>
+						<input type="number" id="two_day_three" name="two_day_three"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Qualification -->
+						<label for="two_day_four">4:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_four" name="two_day_four"><br><br>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="two_day_five">5:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_five" name="two_day_five"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Shift Type -->
+						<label for="two_day_six">6:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_six" name="two_day_six"><br><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="two_day_seven">7:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_seven" name="two_day_seven"><br><br>
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<!-- Shift Type -->
+						<label for="two_day_eight">8:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_eight" name="two_day_eight"><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="two_day_nine">9:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_nine" name="two_day_nine"><br><br>
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<!-- Shift Type -->
+						<label for="two_day_ten">10:</label>
+					</td>
+					<td>
+						<input type="number" id="two_day_ten" name="two_day_ten"><br>
+					</td>
+				</tr>
+			</table>
+
+	  		<button class="btn btn-success" name="chart_type" value="line" type="submit" style="float: center">Submit</button>
+	  		
+		</form>
+	</div>
+{% endblock content %}

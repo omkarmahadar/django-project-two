@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Expense Manager
+{% endblock title %}
+
+{% block scripts %}
+{% endblock scripts %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding-right: 100px">
+	<h2>Bar Graph</h2>
+</div>
+<div width="50%" style="padding-left: 50px; float: left">
+		<form class="contact-form" method="POST" action="get_data_bar/">
+		{% csrf_token %}
+			<table cellpadding="10">
+				<th colspan="4" style="text-align: center;"><h2>Necessities<br><h4> (Groceries, Travelling Costs, Electricity Bills etc.) </h4></h2></th>
+				<tr>
+					<!-- First  Name -->
+					<td>
+						<label for="item_one">Item One:</label>
+					</td>
+					<td>
+						<input type="text" id="item_one" name="item_one"><br><br>
+					</td>
+				
+					<td>
+						<!-- Last Name -->
+						<label for="price_one">Price:</label>
+					</td>
+					<td>
+						<input type="nummber" id="price_one" name="price_one"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Salary -->
+						<label for="item_two">Item Two:  </label>
+					</td>
+					<td>
+						<input type="text" id="item_two" name="item_two"><br><br>
+					</td>
+				
+					<td>
+						<!-- Qualification -->
+						<label for="price_two">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="price_two" name="price_two"><br><br>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="item_three">Item Three:</label>
+					</td>
+					<td>
+						<input type="text" id="item_three" name="item_three"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="price_three">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="price_three" name="price_three"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="item_four">Item Four:</label>
+					</td>
+					<td>
+						<input type="text" id="item_four" name="item_four"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="price_four">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="price_four" name="price_four"><br><br>
+					</td>
+				</tr>
+			</table>
+
+	  		
+	</div>
+
+	<div width="50%" style="padding-left: 50px; float: left; clear: right">
+		
+		{% csrf_token %}
+			<table cellpadding="10">
+				<th colspan="4" style="text-align: center;"><h2>Comforts<br><h4> (Movie Tickets, Shopping Bills, Hotel Bills etc.) </h4></h2></th>
+				<tr>
+					<!-- First  Name -->
+					<td>
+						<label for="two_item_one">Item One:</label>
+					</td>
+					<td>
+						<input type="text" id="two_item_one" name="two_item_one"><br><br>
+					</td>
+				
+					<td>
+						<!-- Last Name -->
+						<label for="two_price_one">Price:</label>
+					</td>
+					<td>
+						<input type="nummber" id="two_price_one" name="two_price_one"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Salary -->
+						<label for="two_item_two">Item Two:  </label>
+					</td>
+					<td>
+						<input type="text" id="two_item_two" name="two_item_two"><br><br>
+					</td>
+				
+					<td>
+						<!-- Qualification -->
+						<label for="two_price_two">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="two_price_two" name="two_price_two"><br><br>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="two_item_three">Item Three:</label>
+					</td>
+					<td>
+						<input type="text" id="two_item_three" name="two_item_three"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="two_price_three">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="two_price_three" name="two_price_three"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="two_item_four">Item Four:</label>
+					</td>
+					<td>
+						<input type="text" id="two_item_four" name="two_item_four"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="two_price_four">Price:</label>
+					</td>
+					<td>
+						<input type="number" id="two_price_four" name="two_price_four"><br><br>
+					</td>
+				</tr>
+			</table>
+		
+
+			<button class="btn btn-success" name="chart_type" value="line" type="submit">Submit</button>
+		</div>
+		</form>
+	
+
+{% endblock content %}

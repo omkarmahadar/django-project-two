@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Expense Manager
+{% endblock title %}
+
+{% block scripts %}
+
+<script>
+		$(document).ready(function(){
+			var ctx = document.getElementById('myChart').getContext('2d');
+			var myChart = new Chart(ctx, {
+			    type: 'doughnut',
+			    data: {
+			        labels: [
+			        	{% for item in items %}
+			            		'{{ item }}',
+			            	{% endfor %}
+			        ],
+			        datasets: [{
+			            label: '# of Votes',
+			            data: [
+			            	{% for price in prices %}
+			            		{{ price }},
+			            	{% endfor %}
+			            ],
+			            backgroundColor: [
+			                'rgba(255, 99, 132, 0.2)',
+			                'rgba(54, 162, 235, 0.2)',
+			                'rgba(255, 206, 86, 0.2)',
+			                'rgba(75, 192, 192, 0.2)',
+			                'rgba(153, 102, 255, 0.2)',
+			                'rgba(255, 159, 64, 0.2)'
+			            ],
+			            borderColor: [
+			                'rgba(255, 99, 132, 1)',
+			                'rgba(54, 162, 235, 1)',
+			                'rgba(255, 206, 86, 1)',
+			                'rgba(75, 192, 192, 1)',
+			                'rgba(153, 102, 255, 1)',
+			                'rgba(255, 159, 64, 1)'
+			            ],
+			            borderWidth: 1
+			        }]
+			    },
+			    options: {
+			    	responsive:false,
+    				maintainAspectRatio: false,
+    				layout:{
+    					padding:{
+    						left:50,
+    						right:0,
+    						top:0,
+    						bottom:0
+    					}
+    				},
+			        scales: {
+			            yAxes: [{
+			                ticks: {
+			                    beginAtZero: true
+			                }
+			            }]
+			        }
+			    }
+			});
+		});
+	</script>
+
+{% endblock scripts %}
+
+{% block content %}
+<div class="container" style="text-align: center; padding-right: 90px">
+	<h2>Doughnut Chart</h2>
+	<h4> (Population, Marks, Percentage Distribution etc.) </h4></h2>
+</div>
+		<br>
+<div width="50%" style="float:left; padding-left: 25px">
+		<form class="contact-form" method="POST" action="/doughnut/" style="float:left ">
+		{% csrf_token %}
+			
+			<table cellpadding="10">
+				<tr>
+					<!-- First  Name -->
+					<td>
+						<label for="item_one">Distribution One:</label>
+					</td>
+					<td>
+						<input type="text" id="item_one" name="item_one"><br><br>
+					</td>
+				
+					<td>
+						<!-- Last Name -->
+						<label for="price_one">Percent:</label>
+					</td>
+					<td>
+						<input type="nummber" id="price_one" name="price_one"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Salary -->
+						<label for="item_two">Distribution Two:  </label>
+					</td>
+					<td>
+						<input type="text" id="item_two" name="item_two"><br><br>
+					</td>
+				
+					<td>
+						<!-- Qualification -->
+						<label for="price_two">Percent:</label>
+					</td>
+					<td>
+						<input type="number" id="price_two" name="price_two"><br><br>
+					</td>	
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="item_three">Distribution Three:</label>
+					</td>
+					<td>
+						<input type="text" id="item_three" name="item_three"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="price_three">Percent:</label>
+					</td>
+					<td>
+						<input type="number" id="price_three" name="price_three"><br><br>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<!-- Phone No. -->
+						<label for="item_four">Distribution Four:</label>
+					</td>
+					<td>
+						<input type="text" id="item_four" name="item_four"><br><br>
+					</td>
+				
+					<td>
+						<!-- Shift Type -->
+						<label for="price_four">Percent:</label>
+					</td>
+					<td>
+						<input type="number" id="price_four" name="price_four"><br><br>
+					</td>
+				</tr>
+			</table>
+			
+	  			<button class="btn btn-success" name="chart_type" value="line" type="submit">Submit</button>
+			</style>
+		</form>
+	</div>
+
+<div width="50%">
+		<canvas id="myChart" width="600" height="490" style="margin: 0 auto; float: left" ></canvas>
+	</div>
+{% endblock content %}
